@@ -175,3 +175,4 @@ footer .small{font-size:12px;opacity:.7}
 .hero{background:#2a1d12 url("assets/mantis.jpg?v=4") center/cover no-repeat;min-height:clamp(380px,62vw,88vh);padding:28px 20px}
 .hero-word{background:transparent}
 .hero-title{color:#fff;text-shadow:0 3px 18px rgba(0,0,0,.55)}
+.hero{min-height:100vh;min-height:100svh}
