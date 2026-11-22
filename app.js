@@ -204,3 +204,8 @@ function heroSound() {
 }
 document.querySelector(".hero").addEventListener("click", heroSound);
 heroSound(); // 처음 열 때 (브라우저가 막으면 조용히 넘어감)
+
+/* 제목 글자를 누르면 그 칸 내용 펼치기/접기 */
+document.querySelectorAll(".sec h2").forEach((h) =>
+  h.addEventListener("click", () => h.parentElement.classList.toggle("open"))
+);

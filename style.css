@@ -200,3 +200,8 @@ footer{background:#000}
 .chip:hover{color:#fff}
 .badge,.tl .type{color:var(--forest);font-weight:700}
 .sample{color:#8A6500}
+/* 각 칸은 제목 글자만 — 내용은 숨김(제목을 누르면 펼쳐짐) */
+.sec:not(.open) > :not(h2){display:none!important}
+.sec h2 .dot,.sec h2 small{display:none}
+.sec h2{cursor:pointer;user-select:none}
+.sec{padding-top:40px}
