@@ -241,3 +241,16 @@ document.querySelectorAll(".tile[data-g]").forEach((t) =>
     if (!same) document.getElementById("log-list").scrollIntoView({ behavior: "smooth", block: "start" });
   })
 );
+
+/* 채집 키워드에 커서가 가까이 가면 배경을 그 사진으로 (흐리게). 휴대폰은 누른 키워드 기준 */
+(() => {
+  const fx = document.getElementById("bgfx");
+  if (!fx) return;
+  const show = (src) => { if (src) { fx.style.backgroundImage = `url("${src}")`; fx.classList.add("show"); } else fx.classList.remove("show"); };
+  const picked = () => document.querySelector(".tile[data-g].on")?.dataset.bg;
+  document.querySelectorAll(".tile[data-g]").forEach((t) => {
+    t.addEventListener("mouseenter", () => show(t.dataset.bg));
+    t.addEventListener("mouseleave", () => show(picked()));
+    t.addEventListener("click", () => setTimeout(() => show(picked()), 0));
+  });
+})();
