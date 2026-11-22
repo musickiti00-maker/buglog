@@ -112,6 +112,12 @@ input,select,textarea{display:block;width:100%;margin-top:4px;border:1px solid v
 .out pre{white-space:pre-wrap;background:#0006;padding:12px;border-radius:10px;font-size:13px;color:var(--cream)}
 .out code{color:var(--gold)}
 
+.hero-word{display:inline-block;border:3px solid var(--gold);border-radius:28px;padding:22px 48px;background:var(--forest)}
+.hero-title{margin:0;font-size:clamp(56px,10vw,104px);font-weight:800;line-height:1.1;color:var(--cream);letter-spacing:-1px}
+.hero-title b{color:var(--red)}
+.hero-en{margin:6px 0 0;letter-spacing:6px;color:var(--gold);font-weight:700;font-size:14px}
+.ph-text{color:var(--mint);font-size:14px}
+.about{grid-template-columns:1fr}
 /* footer */
 footer{margin-top:70px;background:var(--deep);color:var(--mint);text-align:center;padding:36px 20px}
 .foot-logo{width:90px}
