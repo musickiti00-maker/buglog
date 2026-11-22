@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BugLog 버그로그 · 곤충 관찰 기록</title>
+<meta name="description" content="곤충과학자를 꿈꾸는 중학생의 곤충 관찰 기록장, 버그로그">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <a href="#home" class="nav-logo"><img src="assets/icon.svg" alt=""><span><b>Bug</b>Log</span></a>
+  <button class="nav-toggle" aria-label="메뉴 열기">☰</button>
+  <nav class="nav-links">
+    <a href="#about">소개</a>
+    <a href="#logs">관찰일지</a>
+    <a href="#dex">곤충도감</a>
+    <a href="#reports">탐구보고서</a>
+    <a href="#timeline">성장기록</a>
+    <a href="#videos">유튜브</a>
+  </nav>
+</header>
+
+<section id="home" class="hero">
+  <button class="hero-logo" id="heroLogo" title="눌러 보세요!">
+    <img src="assets/logo-animated.svg" alt="BugLog 버그로그 로고">
+  </button>
+  <p class="hero-tag">곤충과학자를 꿈꾸는 중학생의 <em>곤충 관찰 기록장</em></p>
+  <div class="stats" id="stats"></div>
+  <p class="hint">🔊 로고를 누르면 토리가 소리와 함께 다시 날아와요</p>
+</section>
+
+<main>
+  <section id="about" class="sec">
+    <h2><span class="dot"></span>소개</h2>
+    <div class="about" id="about-box"></div>
+  </section>
+
+  <section id="logs" class="sec">
+    <h2><span class="dot"></span>관찰일지</h2>
+    <p class="sub">보고 · 궁금해하고 · 알아낸 것을 날짜별로 기록해요</p>
+    <div class="toolbar">
+      <div class="chips" id="chips"></div>
+      <input id="search" type="search" placeholder="곤충 이름·내용 검색">
+    </div>
+    <div class="cards" id="log-list"></div>
+  </section>
+
+  <section id="dex" class="sec">
+    <h2><span class="dot"></span>내 곤충도감</h2>
+    <p class="sub">관찰일지에 나온 곤충이 자동으로 모여요</p>
+    <div class="dex" id="dex-list"></div>
+  </section>
+
+  <section id="reports" class="sec">
+    <h2><span class="dot"></span>탐구 보고서</h2>
+    <p class="sub">질문 → 방법 → 결과 → 느낀 점</p>
+    <div id="report-list"></div>
+  </section>
+
+  <section id="timeline" class="sec">
+    <h2><span class="dot"></span>성장 기록</h2>
+    <p class="sub">체험 · 독서 · 대회 · 활동의 발자취</p>
+    <ol class="tl" id="tl-list"></ol>
+  </section>
+
+  <section id="videos" class="sec">
+    <h2><span class="dot"></span>유튜브</h2>
+    <div class="videos" id="video-list"></div>
+  </section>
+
+  <section id="helper" class="sec helper">
+    <h2><span class="dot"></span>기록 만들기 도우미 <small>(주인장 전용)</small></h2>
+    <p class="sub">칸을 채우고 버튼을 누르면 data.js 에 붙여 넣을 글이 만들어져요</p>
+    <form id="helper-form">
+      <div class="grid2">
+        <label>날짜<input name="date" type="date" required></label>
+        <label>곤충 이름<input name="insect" placeholder="예: 칠성무당벌레" required></label>
+        <label>제목<input name="title" placeholder="예: 햇볕 아래 모인 무당벌레" required></label>
+        <label>분류(목)
+          <select name="order">
+            <option>딱정벌레목</option><option>나비목</option><option>잠자리목</option><option>메뚜기목</option>
+            <option>벌목</option><option>노린재목</option><option>파리목</option><option>사마귀목</option><option>기타</option>
+          </select></label>
+        <label>장소 (넓게!)<input name="place" placeholder="예: 동네 공원"></label>
+        <label>날씨<input name="weather" placeholder="예: 맑음 · 18℃"></label>
+        <label>사진 파일 이름<input name="photo" placeholder="예: 무당벌레1.jpg (photos 폴더)"></label>
+      </div>
+      <label>무엇을 보았나요?<textarea name="observed" rows="2" required></textarea></label>
+      <label>궁금한 점<textarea name="question" rows="2"></textarea></label>
+      <label>알아낸 것<textarea name="learned" rows="2"></textarea></label>
+      <p class="err" id="helper-err"></p>
+      <button type="submit" class="btn">글 만들기</button>
+    </form>
+    <div id="helper-out" class="out" hidden>
+      <p>① 아래 글을 복사 → ② data.js 의 <code>const LOGS = [</code> 바로 아래 줄에 붙여 넣기 → ③ 저장 후 새로고침</p>
+      <pre id="helper-code"></pre>
+      <button class="btn" id="copy-btn">복사하기</button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <img src="assets/profile.svg" alt="" class="foot-logo">
+  <p>© BugLog 버그로그 · 곤충 관찰 기록</p>
+  <p class="small">이 사이트의 기록과 사진은 직접 관찰한 것입니다.</p>
+</footer>
+
+<button class="tori" id="tori" aria-label="토리에게 곤충 상식 듣기"><img src="assets/icon.svg" alt=""></button>
+<div class="bubble" id="bubble" hidden></div>
+
+<div class="modal" id="modal" hidden><div class="modal-card" id="modal-card"></div></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
