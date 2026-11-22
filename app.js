@@ -191,13 +191,13 @@ function heroSound() {
     const src = a.createBufferSource(), f = a.createBiquadFilter(), g = a.createGain();
     src.buffer = buf; f.type = "bandpass"; f.Q.value = 0.8;
     f.frequency.setValueAtTime(400, t); f.frequency.exponentialRampToValueAtTime(1800, t + 1.2);
-    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.02, t + 0.6); g.gain.exponentialRampToValueAtTime(0.0001, t + 1.6);
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.007, t + 0.6); g.gain.exponentialRampToValueAtTime(0.0001, t + 1.6);
     src.connect(f).connect(g).connect(a.destination); src.start(t); src.stop(t + 1.7);
     // 맑은 종소리 두 번
     [[880, 0.1], [1318.5, 0.28]].forEach(([fr, dt]) => {
       const o = a.createOscillator(), og = a.createGain(), s = t + dt;
       o.type = "sine"; o.frequency.value = fr;
-      og.gain.setValueAtTime(0.0001, s); og.gain.exponentialRampToValueAtTime(0.014, s + 0.02); og.gain.exponentialRampToValueAtTime(0.0001, s + 1.4);
+      og.gain.setValueAtTime(0.0001, s); og.gain.exponentialRampToValueAtTime(0.005, s + 0.02); og.gain.exponentialRampToValueAtTime(0.0001, s + 1.4);
       o.connect(og).connect(a.destination); o.start(s); o.stop(s + 1.5);
     });
   } catch (e) {}
