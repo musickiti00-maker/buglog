@@ -167,3 +167,13 @@ document.addEventListener("keydown", (e) => e.key === "Escape" && ($("#modal").h
 $("#search").addEventListener("input", renderLogs);
 
 renderChips(); renderLogs(); renderDex(); renderReports(); renderTimeline(); renderVideos(); setupHelper();
+
+/* 첫 화면을 누르면(터치하면) 페이드인 다시 */
+document.querySelector(".hero").addEventListener("click", () => {
+  [".hero", ".hero-title"].forEach((s) => {
+    const el = document.querySelector(s);
+    el.style.animation = "none";
+    void el.offsetWidth;
+    el.style.animation = "";
+  });
+});
