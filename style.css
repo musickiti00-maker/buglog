@@ -205,3 +205,6 @@ footer{background:#000}
 .sec h2 .dot,.sec h2 small{display:none}
 .sec h2{cursor:pointer;user-select:none}
 .sec{padding-top:40px}
+/* 기타 안의 작은 칸들 */
+.subsec{padding:18px 0 6px}
+.subtitle{color:#fff;font-size:20px;margin:10px 0 4px}

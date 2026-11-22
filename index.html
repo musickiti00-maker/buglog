@@ -7,7 +7,7 @@
 <meta name="description" content="곤충과학자를 꿈꾸는 학생의 곤충 관찰 기록장, 버그로그">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<link rel="stylesheet" href="style.css?v=20261122t">
+<link rel="stylesheet" href="style.css?v=20261122u">
 </head>
 <body>
 
@@ -28,56 +28,68 @@
     <div class="cards" id="log-list"></div>
   </section>
 
-  <section id="dex" class="sec">
-    <h2><span class="dot"></span>곤충도감</h2>
-    <p class="sub">관찰일지에 나온 곤충이 자동으로 모여요</p>
-    <div class="dex" id="dex-list"></div>
+  <section id="raise" class="sec">
+    <h2>사육</h2>
+    <p class="sub">기르고 있는 곤충의 성장 기록</p>
+    <div class="empty">아직 사육 기록이 없어요</div>
   </section>
 
   <section id="reports" class="sec">
-    <h2><span class="dot"></span>탐구 보고서</h2>
+    <h2>질문</h2>
     <p class="sub">질문 → 방법 → 결과 → 느낀 점</p>
     <div id="report-list"></div>
   </section>
 
-  <section id="timeline" class="sec">
-    <h2><span class="dot"></span>성장 기록</h2>
-    <p class="sub">체험 · 독서 · 대회 · 활동의 발자취</p>
-    <ol class="tl" id="tl-list"></ol>
+  <section id="adopt" class="sec">
+    <h2>분양</h2>
+    <p class="sub">키운 곤충 분양 소식</p>
+    <div class="empty">분양 소식 준비 중이에요</div>
   </section>
 
-  <section id="videos" class="sec">
-    <h2><span class="dot"></span>유튜브</h2>
-    <div class="videos" id="video-list"></div>
-  </section>
-
-  <section id="helper" class="sec helper">
-    <h2><span class="dot"></span>기록 만들기 도우미 <small>(주인장 전용)</small></h2>
-    <p class="sub">칸을 채우고 버튼을 누르면 data.js 에 붙여 넣을 글이 만들어져요</p>
-    <form id="helper-form">
-      <div class="grid2">
-        <label>날짜<input name="date" type="date" required></label>
-        <label>곤충 이름<input name="insect" placeholder="예: 칠성무당벌레" required></label>
-        <label>제목<input name="title" placeholder="예: 햇볕 아래 모인 무당벌레" required></label>
-        <label>분류(목)
-          <select name="order">
-            <option>딱정벌레목</option><option>나비목</option><option>잠자리목</option><option>메뚜기목</option>
-            <option>벌목</option><option>노린재목</option><option>파리목</option><option>사마귀목</option><option>기타</option>
-          </select></label>
-        <label>장소 (넓게!)<input name="place" placeholder="예: 동네 공원"></label>
-        <label>날씨<input name="weather" placeholder="예: 맑음 · 18℃"></label>
-        <label>사진 파일 이름<input name="photo" placeholder="예: 무당벌레1.jpg (photos 폴더)"></label>
+  <section id="etc" class="sec">
+    <h2>기타</h2>
+    <div id="dex" class="subsec">
+      <h3 class="subtitle">곤충도감</h3>
+      <p class="sub">관찰일지에 나온 곤충이 자동으로 모여요</p>
+      <div class="dex" id="dex-list"></div>
+    </div>
+    <div id="timeline" class="subsec">
+      <h3 class="subtitle">성장 기록</h3>
+      <p class="sub">체험 · 독서 · 대회 · 활동의 발자취</p>
+      <ol class="tl" id="tl-list"></ol>
+    </div>
+    <div id="videos" class="subsec">
+      <h3 class="subtitle">유튜브</h3>
+      <div class="videos" id="video-list"></div>
+    </div>
+    <div id="helper" class="subsec helper">
+      <h3 class="subtitle">기록 만들기 도우미 <small>(주인장 전용)</small></h3>
+      <p class="sub">칸을 채우고 버튼을 누르면 data.js 에 붙여 넣을 글이 만들어져요</p>
+      <form id="helper-form">
+        <div class="grid2">
+          <label>날짜<input name="date" type="date" required></label>
+          <label>곤충 이름<input name="insect" placeholder="예: 칠성무당벌레" required></label>
+          <label>제목<input name="title" placeholder="예: 햇볕 아래 모인 무당벌레" required></label>
+          <label>분류(목)
+            <select name="order">
+              <option>딱정벌레목</option><option>나비목</option><option>잠자리목</option><option>메뚜기목</option>
+              <option>벌목</option><option>노린재목</option><option>파리목</option><option>사마귀목</option><option>기타</option>
+            </select></label>
+          <label>장소 (넓게!)<input name="place" placeholder="예: 동네 공원"></label>
+          <label>날씨<input name="weather" placeholder="예: 맑음 · 18℃"></label>
+          <label>사진 파일 이름<input name="photo" placeholder="예: 무당벌레1.jpg (photos 폴더)"></label>
+        </div>
+        <label>무엇을 보았나요?<textarea name="observed" rows="2" required></textarea></label>
+        <label>궁금한 점<textarea name="question" rows="2"></textarea></label>
+        <label>알아낸 것<textarea name="learned" rows="2"></textarea></label>
+        <p class="err" id="helper-err"></p>
+        <button type="submit" class="btn">글 만들기</button>
+      </form>
+      <div id="helper-out" class="out" hidden>
+        <p>① 아래 글을 복사 → ② data.js 의 <code>const LOGS = [</code> 바로 아래 줄에 붙여 넣기 → ③ 저장 후 새로고침</p>
+        <pre id="helper-code"></pre>
+        <button class="btn" id="copy-btn">복사하기</button>
       </div>
-      <label>무엇을 보았나요?<textarea name="observed" rows="2" required></textarea></label>
-      <label>궁금한 점<textarea name="question" rows="2"></textarea></label>
-      <label>알아낸 것<textarea name="learned" rows="2"></textarea></label>
-      <p class="err" id="helper-err"></p>
-      <button type="submit" class="btn">글 만들기</button>
-    </form>
-    <div id="helper-out" class="out" hidden>
-      <p>① 아래 글을 복사 → ② data.js 의 <code>const LOGS = [</code> 바로 아래 줄에 붙여 넣기 → ③ 저장 후 새로고침</p>
-      <pre id="helper-code"></pre>
-      <button class="btn" id="copy-btn">복사하기</button>
     </div>
   </section>
 </main>
