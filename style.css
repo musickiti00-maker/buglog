@@ -151,3 +151,15 @@ footer .small{font-size:12px;opacity:.7}
   .about ul{text-align:left}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* 관찰일지 위(메뉴·첫 화면) 흰색 통일 — 글자 색만 남김 */
+.nav{background:#fff;backdrop-filter:none}
+.nav-logo,.nav-links a,.nav-toggle{color:var(--ink)}
+.nav-links a:hover{background:#fff;color:var(--red)}
+.hero{background:#fff;background-image:none;color:var(--ink)}
+.hero-word{background:#fff;border:0}
+.hero-title{color:var(--ink)}
+.hero-tag{color:var(--ink)}
+.stat{background:#fff;border:0}
+.stat span{color:var(--muted)}
+@media (max-width:720px){.nav-links{background:#fff}}
