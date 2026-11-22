@@ -259,3 +259,9 @@ footer{background:#000}
 .ctiles .tile:first-child{border-top:1px solid #333}
 .ctiles .tile:hover,.ctiles .tile.on{background:transparent;color:var(--red)}
 .ctiles .tile.on::after{color:var(--red)}
+/* 채집 화면: 키워드 글자만 — 선·화살표·설명·검색·카드 숨김 (키워드 누르면 그 기록만 나타남) */
+.ctiles .tile,.ctiles .tile:first-child{border:0;padding:12px 0;justify-content:flex-start}
+.ctiles .tile::after{content:none}
+.subpage .sec > .sub,.subpage .toolbar{display:none}
+.subpage .sec:not(.picked) #log-list{display:none}
+.topbar{border-bottom:0}

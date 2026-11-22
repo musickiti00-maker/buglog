@@ -236,6 +236,7 @@ document.querySelectorAll(".tile[data-g]").forEach((t) =>
     const g = t.dataset.g, same = group === g;
     group = same ? "" : g;
     document.querySelectorAll(".tile[data-g]").forEach((x) => x.classList.toggle("on", !same && x === t));
+    document.getElementById("logs").classList.toggle("picked", !same);
     renderLogs();
     if (!same) document.getElementById("log-list").scrollIntoView({ behavior: "smooth", block: "start" });
   })
