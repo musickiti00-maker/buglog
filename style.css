@@ -170,3 +170,4 @@ footer .small{font-size:12px;opacity:.7}
 .hero-bug{width:min(680px,92vw);border-radius:16px;margin-top:16px}
 /* 흰 화면을 사진 크기에 맞춤 */
 .hero{min-height:0;padding-bottom:28px}
+.hero-bug{width:min(480px,86vw)}
