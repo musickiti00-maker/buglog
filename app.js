@@ -17,20 +17,6 @@ function renderStats() {
   $("#stats").innerHTML = items.map(([n, t]) => `<div class="stat"><b>${n}</b><span>${t}</span></div>`).join("");
 }
 
-/* 소개 */
-function renderAbout() {
-  const p = PROFILE;
-  $("#about-box").innerHTML = `
-    <div>
-      <div class="name">${esc(p.nickname)}</div>
-      <div class="dream">꿈: ${esc(p.dream)}</div>
-      <p>${esc(p.intro)}</p>
-      <div class="tags">${p.interests.map((i) => `<span class="tag">#${esc(i)}</span>`).join("")}</div>
-      <h3>나의 목표</h3>
-      <ul>${p.goals.map((g) => `<li>${esc(g)}</li>`).join("")}</ul>
-    </div>`;
-}
-
 /* 관찰일지 */
 let filter = "전체";
 function renderChips() {
@@ -194,4 +180,4 @@ document.addEventListener("keydown", (e) => e.key === "Escape" && ($("#modal").h
 $("#search").addEventListener("input", renderLogs);
 $(".nav-toggle").addEventListener("click", () => $(".nav-links").classList.toggle("open"));
 
-renderStats(); renderAbout(); renderChips(); renderLogs(); renderDex(); renderReports(); renderTimeline(); renderVideos(); setupHelper();
+renderStats(); renderChips(); renderLogs(); renderDex(); renderReports(); renderTimeline(); renderVideos(); setupHelper();
