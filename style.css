@@ -227,3 +227,6 @@ footer{background:#000}
 /* 투곤 박스: 사진으로 꽉 채움 */
 .tile[data-t="fight"]{background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.45)),url("assets/fight.jpg?v=1") 52% 55%/cover no-repeat;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.7)}
 .tile[data-t="fight"]:hover,.tile[data-t="fight"].on{background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.25)),url("assets/fight.jpg?v=1") 52% 55%/cover no-repeat;color:#fff;border-color:#fff}
+/* 질문 박스: 사진으로 꽉 채움 */
+.tile[data-t="reports"]{background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.45)),url("assets/question.jpg?v=1") 45% 60%/cover no-repeat;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.7)}
+.tile[data-t="reports"]:hover,.tile[data-t="reports"].on{background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.25)),url("assets/question.jpg?v=1") 45% 60%/cover no-repeat;color:#fff;border-color:#fff}
