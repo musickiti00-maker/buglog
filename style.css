@@ -249,3 +249,6 @@ footer{background:#000}
 .back{color:#fff;text-decoration:none;font-size:22px;font-weight:800}
 .back b{color:var(--red)}
 .subpage .sec h2{font-size:40px;cursor:default}
+/* 채집 화면 키워드 박스 */
+.ctiles{padding:20px 0 28px}
+.subpage .chips{display:none}

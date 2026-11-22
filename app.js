@@ -7,6 +7,7 @@ const photo = (src, big) =>
 
 /* 관찰일지 */
 let filter = "전체";
+let group = "";
 function renderChips() {
   const orders = ["전체", ...new Set(LOGS.map((l) => l.order))];
   $("#chips").innerHTML = orders
@@ -19,7 +20,7 @@ function sortedLogs() {
 function renderLogs() {
   const q = $("#search").value.trim();
   const list = sortedLogs().filter(
-    (l) => (filter === "전체" || l.order === filter) && (!q || JSON.stringify(l).includes(q))
+    (l) => (filter === "전체" || l.order === filter) && (!group || (l.group || "기타") === group) && (!q || JSON.stringify(l).includes(q))
   );
   $("#log-list").innerHTML = list.length
     ? list
@@ -133,6 +134,7 @@ function setupHelper() {
     date: ${q(d.date)},
     title: ${q(d.title)},
     insect: ${q(d.insect)},
+    group: ${q(d.group)},
     order: ${q(d.order)},
     place: ${q(d.place)},
     weather: ${q(d.weather)},
@@ -204,6 +206,7 @@ document.querySelectorAll(".sec h2").forEach((h) =>
 /* 네모 박스를 누르면 그 칸만 펼치기 (다시 누르면 접기) */
 document.querySelectorAll(".tile").forEach((t) =>
   t.addEventListener("click", () => {
+    if (!t.dataset.t) return;
     if (t.dataset.href) { location.href = t.dataset.href; return; }
     const sec = document.getElementById(t.dataset.t), wasOpen = sec.classList.contains("open");
     document.querySelectorAll(".sec").forEach((s) => s.classList.remove("open"));
@@ -226,3 +229,14 @@ if (document.querySelector(".hero")) {
     }
   }, 300);
 }
+
+/* 채집 화면: 키워드 박스(갑충·풀벌레·수서곤충·날벌레·기타)로 기록 고르기 */
+document.querySelectorAll(".tile[data-g]").forEach((t) =>
+  t.addEventListener("click", () => {
+    const g = t.dataset.g, same = group === g;
+    group = same ? "" : g;
+    document.querySelectorAll(".tile[data-g]").forEach((x) => x.classList.toggle("on", !same && x === t));
+    renderLogs();
+    if (!same) document.getElementById("log-list").scrollIntoView({ behavior: "smooth", block: "start" });
+  })
+);

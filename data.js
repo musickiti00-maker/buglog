@@ -26,12 +26,14 @@ const PROFILE = {
   youtube: "",   // 유튜브 채널 주소를 만들면 여기에 넣어요. 예: "https://www.youtube.com/@buglog"
 };
 
-/* 📒 관찰일지 — 맨 위가 가장 최근이 되도록 위에 추가해요 */
+/* 📒 채집 기록 — 맨 위가 가장 최근이 되도록 위에 추가해요
+   group(키워드): "갑충" · "풀벌레" · "수서곤충" · "날벌레" · "기타" 중 하나 */
 const LOGS = [
   {
     date: "2026-11-15",
     title: "늦가을 햇볕 아래 모인 무당벌레",
     insect: "칠성무당벌레",
+    group: "갑충",
     order: "딱정벌레목",
     place: "동네 공원 화단",
     weather: "맑음 · 14℃",
@@ -45,6 +47,7 @@ const LOGS = [
     date: "2026-10-03",
     title: "장수풍뎅이 애벌레 몸무게 재기",
     insect: "장수풍뎅이",
+    group: "갑충",
     order: "딱정벌레목",
     place: "집 (사육통)",
     weather: "실내 · 22℃",
@@ -58,6 +61,7 @@ const LOGS = [
     date: "2026-09-12",
     title: "케일 잎 위의 초록 애벌레",
     insect: "배추흰나비 애벌레",
+    group: "날벌레",
     order: "나비목",
     place: "학교 텃밭",
     weather: "흐림 · 24℃",
