@@ -246,11 +246,49 @@ document.querySelectorAll(".tile[data-g]").forEach((t) =>
 (() => {
   const fx = document.getElementById("bgfx");
   if (!fx) return;
-  const show = (src) => { if (src) { fx.style.backgroundImage = `url("${src}")`; fx.classList.add("show"); } else fx.classList.remove("show"); };
+  const def = fx.dataset.default;
+  const show = (src) => { src = src || def; if (src) { fx.style.backgroundImage = `url("${src}")`; fx.classList.add("show"); } else fx.classList.remove("show"); };
+  show(def);
   const picked = () => document.querySelector(".tile[data-g].on")?.dataset.bg;
   document.querySelectorAll(".tile[data-g]").forEach((t) => {
     t.addEventListener("mouseenter", () => show(t.dataset.bg));
     t.addEventListener("mouseleave", () => show(picked()));
     t.addEventListener("click", () => setTimeout(() => show(picked()), 0));
   });
+})();
+
+/* 채집 화면에 들어오면 숲 소리 (바람 + 새소리, 작게). 브라우저가 막으면 처음 손댈 때 */
+(() => {
+  if (!document.getElementById("bgfx")) return;
+  let ac;
+  const play = () => {
+    try {
+      ac ??= new (window.AudioContext || window.webkitAudioContext)();
+      ac.resume();
+      const t0 = ac.currentTime + 0.05, dur = 4.5;
+      const n = Math.floor(ac.sampleRate * dur), buf = ac.createBuffer(1, n, ac.sampleRate), d = buf.getChannelData(0);
+      let last = 0;
+      for (let i = 0; i < n; i++) { last = last * 0.97 + (Math.random() * 2 - 1) * 0.03; d[i] = last * 6; }
+      const src = ac.createBufferSource(), f = ac.createBiquadFilter(), g = ac.createGain();
+      src.buffer = buf; f.type = "lowpass"; f.frequency.value = 900;
+      g.gain.setValueAtTime(0.0001, t0); g.gain.exponentialRampToValueAtTime(0.03, t0 + 1.2);
+      g.gain.setValueAtTime(0.03, t0 + dur - 1.5); g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+      src.connect(f).connect(g).connect(ac.destination); src.start(t0); src.stop(t0 + dur);
+      [0.6, 0.78, 1.9, 2.05, 2.2, 3.3].forEach((dt, i) => {
+        const o = ac.createOscillator(), og = ac.createGain(), s = t0 + dt, base = 2600 + (i % 3) * 350;
+        o.type = "sine";
+        o.frequency.setValueAtTime(base, s); o.frequency.exponentialRampToValueAtTime(base * 1.35, s + 0.08);
+        o.frequency.exponentialRampToValueAtTime(base * 0.9, s + 0.14);
+        og.gain.setValueAtTime(0.0001, s); og.gain.exponentialRampToValueAtTime(0.025, s + 0.02); og.gain.exponentialRampToValueAtTime(0.0001, s + 0.16);
+        o.connect(og).connect(ac.destination); o.start(s); o.stop(s + 0.2);
+      });
+    } catch (e) {}
+  };
+  play();
+  setTimeout(() => {
+    if (!ac || ac.state !== "running") {
+      const once = () => { ["pointerdown", "keydown", "touchstart"].forEach((t) => removeEventListener(t, once, true)); play(); };
+      ["pointerdown", "keydown", "touchstart"].forEach((t) => addEventListener(t, once, true));
+    }
+  }, 300);
 })();
