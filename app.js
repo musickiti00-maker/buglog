@@ -23,7 +23,7 @@ function renderAbout() {
   $("#about-box").innerHTML = `
     <img src="assets/profile.svg" alt="버그로그 프로필">
     <div>
-      <div class="name">${esc(p.nickname)} <span class="meta">· ${esc(p.grade)}</span></div>
+      <div class="name">${esc(p.nickname)}</div>
       <div class="dream">꿈: ${esc(p.dream)}</div>
       <p>${esc(p.intro)}</p>
       <div class="tags">${p.interests.map((i) => `<span class="tag">#${esc(i)}</span>`).join("")}</div>
