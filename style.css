@@ -171,3 +171,7 @@ footer .small{font-size:12px;opacity:.7}
 /* 흰 화면을 사진 크기에 맞춤 */
 .hero{min-height:0;padding-bottom:28px}
 .hero-bug{width:min(480px,86vw)}
+/* 첫 화면을 사마귀 사진으로 가득 채움 */
+.hero{background:#2a1d12 url("assets/mantis.jpg?v=4") center/cover no-repeat;min-height:clamp(380px,62vw,88vh);padding:28px 20px}
+.hero-word{background:transparent}
+.hero-title{color:#fff;text-shadow:0 3px 18px rgba(0,0,0,.55)}
