@@ -252,3 +252,10 @@ footer{background:#000}
 /* 채집 화면 키워드 박스 */
 .ctiles{padding:20px 0 28px}
 .subpage .chips{display:none}
+/* 채집 키워드: 박스 대신 한 줄씩 */
+.ctiles{display:flex;flex-direction:column;gap:0;max-width:none;padding:8px 0 28px}
+.ctiles .tile{aspect-ratio:auto;border:0;border-bottom:1px solid #333;border-radius:0;text-align:left;padding:18px 4px;font-size:22px;display:flex;justify-content:space-between;align-items:center}
+.ctiles .tile::after{content:"›";color:#777;font-size:26px}
+.ctiles .tile:first-child{border-top:1px solid #333}
+.ctiles .tile:hover,.ctiles .tile.on{background:transparent;color:var(--red)}
+.ctiles .tile.on::after{color:var(--red)}
