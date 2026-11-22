@@ -5,18 +5,6 @@ const sampleTag = (x) => (x.sample ? '<span class="badge sample">예시</span>' 
 const photo = (src, big) =>
   src ? `<img src="${esc(src)}" alt="" loading="lazy">` : `<span class="ph-text">📷 사진 준비 중</span>`;
 
-/* 숫자 */
-function renderStats() {
-  const species = new Set(LOGS.map((l) => l.insect)).size;
-  const items = [
-    [LOGS.length, "관찰일지"],
-    [species, "만난 곤충"],
-    [REPORTS.length, "탐구 보고서"],
-    [VIDEOS.length, "유튜브 영상"],
-  ];
-  $("#stats").innerHTML = items.map(([n, t]) => `<div class="stat"><b>${n}</b><span>${t}</span></div>`).join("");
-}
-
 /* 관찰일지 */
 let filter = "전체";
 function renderChips() {
@@ -174,10 +162,8 @@ document.addEventListener("click", (e) => {
   const card = e.target.closest(".card");
   if (card) openLog(+card.dataset.i);
   if (e.target.closest(".close") || e.target.id === "modal") $("#modal").hidden = true;
-  if (e.target.closest(".nav-links a")) $(".nav-links").classList.remove("open");
 });
 document.addEventListener("keydown", (e) => e.key === "Escape" && ($("#modal").hidden = true));
 $("#search").addEventListener("input", renderLogs);
-$(".nav-toggle").addEventListener("click", () => $(".nav-links").classList.toggle("open"));
 
-renderStats(); renderChips(); renderLogs(); renderDex(); renderReports(); renderTimeline(); renderVideos(); setupHelper();
+renderChips(); renderLogs(); renderDex(); renderReports(); renderTimeline(); renderVideos(); setupHelper();
