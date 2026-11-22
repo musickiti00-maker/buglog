@@ -265,3 +265,4 @@ footer{background:#000}
 .subpage .sec > .sub,.subpage .toolbar{display:none}
 .subpage .sec:not(.picked) #log-list{display:none}
 .topbar{border-bottom:0}
+.ctiles .tile,.ctiles .tile:first-child{padding:22px 0}
