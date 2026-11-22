@@ -1,4 +1,4 @@
-/* 버그로그 화면 그리기 — 내용은 data.js 에서 고쳐요 (이 파일은 안 고쳐도 돼요) */
+/* 버그니티 화면 그리기 — 내용은 data.js 에서 고쳐요 (이 파일은 안 고쳐도 돼요) */
 const $ = (s) => document.querySelector(s);
 const esc = (t) => String(t ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const sampleTag = (x) => (x.sample ? '<span class="badge sample">예시</span>' : "");
@@ -106,7 +106,7 @@ function renderTimeline() {
 /* 유튜브 */
 function renderVideos() {
   const cta = `<div class="yt-cta"><div>
-      <b>버그로그 유튜브</b><br>${
+      <b>버그니티 유튜브</b><br>${
         PROFILE.youtube
           ? `<a href="${esc(PROFILE.youtube)}" target="_blank" rel="noopener">채널 보러 가기 →</a>`
           : "채널 준비 중이에요. 곧 만나요!"
