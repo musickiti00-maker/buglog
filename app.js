@@ -209,3 +209,13 @@ heroSound(); // 처음 열 때 (브라우저가 막으면 조용히 넘어감)
 document.querySelectorAll(".sec h2").forEach((h) =>
   h.addEventListener("click", () => h.parentElement.classList.toggle("open"))
 );
+
+/* 네모 박스를 누르면 그 칸만 펼치기 (다시 누르면 접기) */
+document.querySelectorAll(".tile").forEach((t) =>
+  t.addEventListener("click", () => {
+    const sec = document.getElementById(t.dataset.t), wasOpen = sec.classList.contains("open");
+    document.querySelectorAll(".sec").forEach((s) => s.classList.remove("open"));
+    document.querySelectorAll(".tile").forEach((x) => x.classList.remove("on"));
+    if (!wasOpen) { sec.classList.add("open"); t.classList.add("on"); sec.scrollIntoView({ behavior: "smooth", block: "start" }); }
+  })
+);

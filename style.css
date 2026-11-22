@@ -208,3 +208,8 @@ footer{background:#000}
 /* 기타 안의 작은 칸들 */
 .subsec{padding:18px 0 6px}
 .subtitle{color:#fff;font-size:20px;margin:10px 0 4px}
+/* 키워드 네모 박스 */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;padding:48px 0 8px}
+.tile{aspect-ratio:1;background:transparent;border:1.5px solid #fff;border-radius:14px;color:#fff;font:inherit;font-size:clamp(22px,3vw,30px);font-weight:800;cursor:pointer;transition:background .2s,color .2s}
+.tile:hover,.tile.on{background:#fff;color:#000}
+.sec:not(.open){display:none}
