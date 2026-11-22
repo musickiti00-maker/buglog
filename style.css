@@ -244,3 +244,8 @@ footer{background:#000}
 .tile[data-t="adopt"],.tile[data-t="adopt"]:hover,.tile[data-t="adopt"].on{background:linear-gradient(to bottom,rgba(0,0,0,0) 40%,rgba(0,0,0,.55) 75%,rgba(0,0,0,.9) 100%),url("assets/adopt.jpg?v=1") 35% 50%/cover no-repeat}
 .tile[data-t="fight"],.tile[data-t="fight"]:hover,.tile[data-t="fight"].on{background:linear-gradient(to bottom,rgba(0,0,0,0) 40%,rgba(0,0,0,.55) 75%,rgba(0,0,0,.9) 100%),url("assets/fight.jpg?v=1") 52% 55%/cover no-repeat}
 .tile[data-t="etc"],.tile[data-t="etc"]:hover,.tile[data-t="etc"].on{background:linear-gradient(to bottom,rgba(0,0,0,0) 40%,rgba(0,0,0,.55) 75%,rgba(0,0,0,.9) 100%),url("assets/etc.jpg?v=1") 38% 50%/cover no-repeat}
+/* 채집 전용 화면 */
+.topbar{padding:18px 24px;border-bottom:1px solid #222}
+.back{color:#fff;text-decoration:none;font-size:22px;font-weight:800}
+.back b{color:var(--red)}
+.subpage .sec h2{font-size:40px;cursor:default}

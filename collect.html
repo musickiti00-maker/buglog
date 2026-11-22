@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>채집 · BugLog 버그로그</title>
+<meta name="description" content="곤충과학자를 꿈꾸는 학생의 곤충 관찰 기록장, 버그로그">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="style.css?v=20261123k">
+</head>
+<body class="subpage">
+
+<header class="topbar">
+  <a href="./" class="back">← <b>Bug</b>Log</a>
+</header>
+
+<main>
+  <section id="logs" class="sec open">
+    <h2>채집</h2>
+    <p class="sub">보고 · 궁금해하고 · 알아낸 것을 날짜별로 기록해요</p>
+    <div class="toolbar">
+      <div class="chips" id="chips"></div>
+      <input id="search" type="search" placeholder="곤충 이름·내용 검색">
+    </div>
+    <div class="cards" id="log-list"></div>
+  </section>
+</main>
+
+<footer>
+  <p>© BugLog 버그로그 · 곤충 관찰 기록</p>
+</footer>
+
+<div class="modal" id="modal" hidden><div class="modal-card" id="modal-card"></div></div>
+
+<script src="data.js?v=20261122b"></script>
+<script src="app.js?v=20261123k"></script>
+</body>
+</html>

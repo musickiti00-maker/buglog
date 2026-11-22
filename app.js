@@ -164,12 +164,12 @@ document.addEventListener("click", (e) => {
   if (e.target.closest(".close") || e.target.id === "modal") $("#modal").hidden = true;
 });
 document.addEventListener("keydown", (e) => e.key === "Escape" && ($("#modal").hidden = true));
-$("#search").addEventListener("input", renderLogs);
+$("#search")?.addEventListener("input", renderLogs);
 
-renderChips(); renderLogs(); renderDex(); renderReports(); renderTimeline(); renderVideos(); setupHelper();
+[renderChips, renderLogs, renderDex, renderReports, renderTimeline, renderVideos, setupHelper].forEach((f) => { try { f(); } catch (e) {} });
 
 /* 첫 화면을 누르면(터치하면) 페이드인 다시 */
-document.querySelector(".hero").addEventListener("click", () => {
+document.querySelector(".hero")?.addEventListener("click", () => {
   [".hero", ".hero-title"].forEach((s) => {
     const el = document.querySelector(s);
     el.style.animation = "none";
@@ -194,7 +194,7 @@ function heroSound() {
     });
   } catch (e) {}
 }
-document.querySelector(".hero").addEventListener("click", heroSound);
+document.querySelector(".hero")?.addEventListener("click", heroSound);
 
 /* 제목 글자를 누르면 그 칸 내용 펼치기/접기 */
 document.querySelectorAll(".sec h2").forEach((h) =>
@@ -204,6 +204,7 @@ document.querySelectorAll(".sec h2").forEach((h) =>
 /* 네모 박스를 누르면 그 칸만 펼치기 (다시 누르면 접기) */
 document.querySelectorAll(".tile").forEach((t) =>
   t.addEventListener("click", () => {
+    if (t.dataset.href) { location.href = t.dataset.href; return; }
     const sec = document.getElementById(t.dataset.t), wasOpen = sec.classList.contains("open");
     document.querySelectorAll(".sec").forEach((s) => s.classList.remove("open"));
     document.querySelectorAll(".tile").forEach((x) => x.classList.remove("on"));
