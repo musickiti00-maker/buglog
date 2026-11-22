@@ -177,3 +177,30 @@ document.querySelector(".hero").addEventListener("click", () => {
     el.style.animation = "";
   });
 });
+
+/* 페이드인 시작할 때 희미한 소리 (바람 + 맑은 종소리) */
+let heroAC;
+function heroSound() {
+  try {
+    heroAC ??= new (window.AudioContext || window.webkitAudioContext)();
+    const a = heroAC; a.resume();
+    const t = a.currentTime + 0.02;
+    // 부드러운 바람 소리
+    const n = Math.floor(a.sampleRate * 1.6), buf = a.createBuffer(1, n, a.sampleRate), d = buf.getChannelData(0);
+    for (let i = 0; i < n; i++) d[i] = Math.random() * 2 - 1;
+    const src = a.createBufferSource(), f = a.createBiquadFilter(), g = a.createGain();
+    src.buffer = buf; f.type = "bandpass"; f.Q.value = 0.8;
+    f.frequency.setValueAtTime(400, t); f.frequency.exponentialRampToValueAtTime(1800, t + 1.2);
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.05, t + 0.6); g.gain.exponentialRampToValueAtTime(0.0001, t + 1.6);
+    src.connect(f).connect(g).connect(a.destination); src.start(t); src.stop(t + 1.7);
+    // 맑은 종소리 두 번
+    [[880, 0.1], [1318.5, 0.28]].forEach(([fr, dt]) => {
+      const o = a.createOscillator(), og = a.createGain(), s = t + dt;
+      o.type = "sine"; o.frequency.value = fr;
+      og.gain.setValueAtTime(0.0001, s); og.gain.exponentialRampToValueAtTime(0.035, s + 0.02); og.gain.exponentialRampToValueAtTime(0.0001, s + 1.4);
+      o.connect(og).connect(a.destination); o.start(s); o.stop(s + 1.5);
+    });
+  } catch (e) {}
+}
+document.querySelector(".hero").addEventListener("click", heroSound);
+heroSound(); // 처음 열 때 (브라우저가 막으면 조용히 넘어감)
