@@ -211,3 +211,18 @@ document.querySelectorAll(".tile").forEach((t) =>
     if (!wasOpen) { sec.classList.add("open"); t.classList.add("on"); sec.scrollIntoView({ behavior: "smooth", block: "start" }); }
   })
 );
+
+/* 페이드인될 때 자동으로 띵띵 — 브라우저가 막으면 화면 어디든 처음 손댈 때 한 번 재생 */
+if (document.querySelector(".hero")) {
+  heroSound();
+  setTimeout(() => {
+    if (!heroAC || heroAC.state !== "running") {
+      const once = (e) => {
+        ["pointerdown", "keydown", "touchstart"].forEach((t) => removeEventListener(t, once, true));
+        if (e.target.closest && e.target.closest(".hero")) return; // 첫 화면을 누른 거면 원래대로 한 번만
+        heroSound();
+      };
+      ["pointerdown", "keydown", "touchstart"].forEach((t) => addEventListener(t, once, true));
+    }
+  }, 300);
+}
