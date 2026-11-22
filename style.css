@@ -163,3 +163,6 @@ footer .small{font-size:12px;opacity:.7}
 .stat{background:#fff;border:0}
 .stat span{color:var(--muted)}
 @media (max-width:720px){.nav-links{background:#fff}}
+/* 흰 첫 화면 크게, BugLog 글자는 맨 위 */
+.hero{min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:28px 20px 40px}
+.hero-word{padding:0 20px}
