@@ -191,3 +191,4 @@ footer{background:#000}
 @keyframes heroIn{from{opacity:0}to{opacity:1}}
 @keyframes titleIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 .hero{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.hero-title{animation:titleIn .8s .3s ease-out both}
