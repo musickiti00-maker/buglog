@@ -176,3 +176,4 @@ footer .small{font-size:12px;opacity:.7}
 .hero-word{background:transparent}
 .hero-title{color:#fff;text-shadow:0 3px 18px rgba(0,0,0,.55)}
 .hero{min-height:100vh;min-height:100svh}
+@media (orientation:portrait){.hero{background-image:url("assets/mantis-portrait.jpg?v=1")}}
